@@ -32,16 +32,21 @@ class App extends Component {
 
   render() {
 
+    const listStyle = {
+      fontSize: '12px',
+      textAlign: 'center'
+    };
+
     const charList = this.state.textInput.split('').map((char, index) => {
       return <Char
         character={char}
         key={index}
         clicked={this.deleteCharHandler.bind(this, index)} />
-    });
+    })
 
     return (
       <div className="App">
-        <ol>
+        <ol style={listStyle}>
           <li>Create an input field (in App component) with a change listener which outputs the length of the entered text below it (e.g. in a paragraph).</li>
           <li>Create a new component (=> ValidationComponent) which receives the text length as a prop</li>
           <li>Inside the ValidationComponent, either output "Text too short" or "Text long enough" depending on the text length (e.g. take 5 as a minimum length)</li>
@@ -62,7 +67,7 @@ class App extends Component {
 
         <ValidationComponent inputLength={this.state.textInput.length} />
         {charList}
-      </div>
+      </div >
     );
   }
 }
