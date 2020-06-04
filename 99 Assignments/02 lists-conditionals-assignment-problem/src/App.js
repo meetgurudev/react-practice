@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import ValidationComponent from "./ValidationComponent/ValidationComponent";
+import Char from './Char/Char';
+
 class App extends Component {
 
   // State of the component
@@ -9,20 +12,33 @@ class App extends Component {
   };
 
 
-  getString = (event) => {
+  inputChangeHandler = (event) => {
     // Get the input value here.
     let inputString = event.target.value;
-    // Hold the current state.
-    const updatedState = [...this.state];
-    console.log(updatedState.textInput);
-    // Update the state here.
-    updatedState.textInput = inputString;
     // Set the updated state.
     this.setState({ textInput: inputString });
   }
 
+  deleteCharHandler = index => {
+    // Convert the string to array.
+    const text = this.state.textInput.split('');
+    // Remove char at the index.
+    text.splice(index, 1);
+    // Convert back the array into string.
+    const updatedText = text.join('');
+    // then set the state with updated text.
+    this.setState({ textInput: updatedText });
+  }
+
   render() {
-    console.log(this.state.textInput);
+
+    const charList = this.state.textInput.split('').map((char, index) => {
+      return <Char
+        character={char}
+        key={index}
+        clicked={this.deleteCharHandler.bind(this, index)} />
+    });
+
     return (
       <div className="App">
         <ol>
@@ -35,7 +51,17 @@ class App extends Component {
         </ol>
         <p>Hint: Keep in mind that JavaScript strings are basically arrays!</p>
 
-        <input type='text' onChange={(event) => this.getString(event)} />
+        <hr />
+
+        <input
+          type='text'
+          onChange={this.inputChangeHandler}
+          value={this.state.textInput} />
+
+        <p>{this.state.textInput}</p>
+
+        <ValidationComponent inputLength={this.state.textInput.length} />
+        {charList}
       </div>
     );
   }
