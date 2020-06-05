@@ -2,4 +2,24 @@
   text-align: center;
 }
 
-button {}
+.red {
+  color: red;
+}
+
+.bold {
+  font-weight: bolder;
+}
+
+.button {
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: lightgreen;
+  color: black;
+}
