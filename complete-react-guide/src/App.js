@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from "./Person/Person";
+import classes from "./App.css";
 
 class App extends Component {
 
@@ -88,21 +89,21 @@ class App extends Component {
 		let pClasses = [];
 
 		if (this.state.persons.length <= 2) {
-			pClasses.push('red'); // Clasees = ['red']
+			pClasses.push(classes.red); // Clasees = ['red']
 		}
 
 		if (this.state.persons.length <= 1) {
-			pClasses.push('bold'); // Clasees = ['red', 'bold']
+			pClasses.push(classes.bol); // Clasees = ['red', 'bold']
 		}
 
 		return (
 
-			<div className="App">
+			<div className={classes.App}>
 
 				<h1>Hi, I'm a React App</h1>
 				<p className={pClasses.join(' ')}>This is really working</p>
 
-				<button style={btnStyle}
+				<button className={classes.button}
 					onClick={() => this.togglePersonHandler()} >Switch Name </button>
 
 				{persons}
