@@ -1,8 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from "./Cockpit.css"
 
 const cockpit = props => {
 
+  // Add anywhere ~= to comoponent did update.
+  useEffect(() => {
+    console.log("[Cockput.js] useEffect")
+    // Http request...
+    // const timer = setTimeout(() => {
+    setTimeout(() => {
+      alert("Saved data to cloud");
+    }, 1000)
+
+    // return an anonymous function...
+    // Runs when useeffect run for last time.
+    return () => {
+
+      // clearTimeout(timer);
+      console.log("[Cockput.js] clean up work useEffect")
+    };
+
+  }, [])  // [props.persons] Only run when the following are changed
+  // [] Pass an empty to run once for first time.
+
+  useEffect(() => {
+    console.log("[Cockput.js] 2nd useEffect")
+
+    // return an anonymous function...
+    // Runs when useeffect run for last time.
+    return () => {
+      console.log("[Cockput.js] clean up work 2nd useEffect")
+    };
+  }) // No second arg, so will control.
 
   let assignedClasses = [];
   let btnClass = '';
@@ -11,11 +40,11 @@ const cockpit = props => {
     btnClass = classes.Red;
   }
 
-  if (props.persons.length <= 2) {
+  if (props.personsLength <= 2) {
     assignedClasses.push(classes.red); // Clasees = ['red']
   }
 
-  if (props.persons.length <= 1) {
+  if (props.personsLength <= 1) {
     assignedClasses.push(classes.bold); // Clasees = ['red', 'bold']
   }
 
@@ -33,4 +62,5 @@ const cockpit = props => {
   );
 }
 
-export default cockpit;
+// Wrap functional components with memo to avoid re-rendering.
+export default React.memo(cockpit);

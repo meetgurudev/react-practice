@@ -11,21 +11,22 @@ class App extends Component {
     // Exec extended componnent
     super(props);
     console.log('[App.js] constructor');
-    // state variables can be used only in class
-    this.state = {
-      persons: [
-        { id: 'ads', name: "Guru", age: 23 },
-        { id: 'dafg', name: "Dev", age: 29 },
-        { id: 'asdas', name: "Kittu", age: 18 }
-      ],
-      showPersons: false
-    }
   }
 
-  static getDerivedStateFromProps(props, state) {
-    console.log('[App.js] get derived state from props', props);
-    return state;
+  state = {
+    persons: [
+      { id: 'ads', name: "Guru", age: 23 },
+      { id: 'dafg', name: "Dev", age: 29 },
+      { id: 'asdas', name: "Kittu", age: 18 }
+    ],
+    showPersons: false,
+    showCockpit: true
   }
+
+  // static getDerivedStateFromProps(props, state) {
+  //   console.log('[App.js] get derived state from props', props);
+  //   return state;
+  // }
 
   // componentWillMount() {
   // 	console.log('[App.js] component will mount');
@@ -35,9 +36,10 @@ class App extends Component {
     console.log('[App.js] Componentn did mount');
   }
 
-  shouldComponentUpdate(nextProps, nextSteps) {
+  shouldComponentUpdate(nextProps, nextState) {
     console.log('[App.js] shouldComponentUpdate');
     return true;
+
   }
 
   componentDidUpdate() {
@@ -109,11 +111,18 @@ class App extends Component {
     return (
 
       <div className={classes.App}>
-        < Cockpit
-          title={this.props.appTitle}
-          showPersons={this.state.showPersons}
-          persons={this.state.persons}
-          clicked={this.togglePersonHandler} />
+
+        <button onClick={() => {
+          this.setState({ showCockpit: false })
+        }}> Hide Cockpit</button>
+
+        {this.state.showCockpit ? (
+          < Cockpit
+            title={this.props.appTitle}
+            showPersons={this.state.showPersons}
+            personsLength={this.state.persons.length}
+            clicked={this.togglePersonHandler} />
+        ) : null}
         {persons}
 
       </div >
