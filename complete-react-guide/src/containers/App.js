@@ -49,9 +49,12 @@ class App extends Component {
   deletePersonHandler = (personIndex) => {
     // slice w/o args simply copies the array.
     // const persons = this.state.persons.slice();
+
     // Or use spread op using the previous array.
     const persons = [...this.state.persons];
+
     // Removes one elm form Index.
+
     persons.splice(personIndex, 1);
     // Then update the state.
     this.setState({ persons: persons })
