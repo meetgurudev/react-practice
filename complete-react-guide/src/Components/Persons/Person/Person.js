@@ -27,10 +27,13 @@ class Person extends Component {
     console.log('[Person.js] Rendering...')
     return (
       <Aux>
-        <AuthContext.Consumer>
+        {/* <AuthContext.Consumer>
           {context =>
             context.authenticated ? <p>Authenticated</p> : <p>Please Log In</p>}
-        </AuthContext.Consumer>
+          </AuthContext.Consumer> */}
+
+        {this.context.authenticated ? <p>Authenticated</p> : <p>Please Log In</p>}
+
         <p onClick={this.props.click}>
           I'm {this.props.name} and I am {this.props.age} years old
           </p>
