@@ -1,17 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classes from "./Cockpit.css"
 
 const cockpit = props => {
+
+  const toggleBtnRef = useRef(null);
 
   // Add anywhere ~= to comoponent did update.
   useEffect(() => {
     console.log("[Cockput.js] useEffect")
     // Http request...
     // const timer = setTimeout(() => {
-    setTimeout(() => {
-      console.log("Saved data to cloud");
-    }, 1000)
+    // setTimeout(() => {
+    //   console.log("Saved data to cloud");
+    // }, 1000)
 
+    toggleBtnRef.current.click();
     // return an anonymous function...
     // Runs when useeffect run for last time.
     return () => {
@@ -54,6 +57,7 @@ const cockpit = props => {
       <h1>{props.title}</h1>
       <p className={assignedClasses.join(' ')}>This is really working</p>
       <button
+        ref={toggleBtnRef}
         className={btnClass}
         onClick={props.clicked} >
         Switch Name
