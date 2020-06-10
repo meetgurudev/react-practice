@@ -9,7 +9,7 @@ const cockpit = props => {
     // Http request...
     // const timer = setTimeout(() => {
     setTimeout(() => {
-      alert("Saved data to cloud");
+      console.log("Saved data to cloud");
     }, 1000)
 
     // return an anonymous function...

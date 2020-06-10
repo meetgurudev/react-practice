@@ -4,6 +4,8 @@ import './App.css';
 import Persons from "../Components/Persons/Persons";
 import Cockpit from "../Components/Cockpit/Cockpit";
 import classes from "./App.css";
+import withClass from "../hoc/withClass";
+import Aux from "../hoc/Auxiliary";
 
 class App extends Component {
 
@@ -113,11 +115,12 @@ class App extends Component {
 
     return (
 
-      <div className={classes.App}>
-
+      <Aux >
         <button onClick={() => {
           this.setState({ showCockpit: false })
-        }}> Hide Cockpit</button>
+        }}>
+          Remove Cockpit
+        </button>
 
         {this.state.showCockpit ? (
           < Cockpit
@@ -127,11 +130,10 @@ class App extends Component {
             clicked={this.togglePersonHandler} />
         ) : null}
         {persons}
-
-      </div >
+      </Aux >
 
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
