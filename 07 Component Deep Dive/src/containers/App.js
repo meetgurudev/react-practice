@@ -28,6 +28,15 @@ class App extends Component {
     authenticated: false
   }
 
+  // static getDerivedStateFromProps(props, state) {
+  //   console.log('[App.js] get derived state from props', props);
+  //   return state;
+  // }
+
+  // componentWillMount() {
+  // 	console.log('[App.js] component will mount');
+  // }
+
   componentDidMount() {
     console.log('[App.js] Componentn did mount');
   }
