@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+
+import axios from '../../axios';
 
 import Post from '../../components/Post/Post';
 import FullPost from '../../components/FullPost/FullPost';
@@ -10,11 +12,12 @@ class Blog extends Component {
 
     state = {
         posts: [],
-        selectedPostId: null
+        selectedPostId: null,
+        errorProperty: null
     }
 
     componentDidMount() {
-        axios.get('https://jsonplaceholder.cypress.io/posts/')
+        axios.get('/posts')
             .then(response => {
                 const posts = response.data.slice(0, 4);
                 const updatedPosts = posts.map(post => {
@@ -24,7 +27,9 @@ class Blog extends Component {
                     }
                 })
                 this.setState({ posts: updatedPosts });
-            });
+            }).catch(error => {
+                this.setState({ errorProperty: true });
+            })
     }
 
     postSelectedHandler = id => {
@@ -32,13 +37,17 @@ class Blog extends Component {
     }
 
     render() {
-        const posts = this.state.posts.map(post => {
-            return <Post
-                key={post.id}
-                title={post.title}
-                author={post.author}
-                clicked={this.postSelectedHandler.bind(this, post.id)} />
-        });
+        let posts = <p style={{ textAlign: "center" }}> Something went wrong</p>
+
+        if (!this.state.errorProperty) {
+            posts = this.state.posts.map(post => {
+                return <Post
+                    key={post.id}
+                    title={post.title}
+                    author={post.author}
+                    clicked={this.postSelectedHandler.bind(this, post.id)} />
+            });
+        }
 
         return (
             <div>

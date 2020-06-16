@@ -16,12 +16,9 @@ class NewPost extends Component {
             content: this.state.content,
             author: this.state.author
         }
-        axios.post('https://jsonplaceholder.cypress.io/posts/', data)
+        axios.post('/posts', data)
             .then(response => {
-                this.props.addedPost(response.data.id)// = () => {
-
-                //     console.log(response.data.id);
-                // }
+                console.log(response.data.id);
             });
     }
 
