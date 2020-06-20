@@ -12,6 +12,7 @@ class NewPost extends Component {
     }
 
     componentDidMount() {
+        // If unauth => this.props.histoty.push('/posts');
         console.log(this.props)
     }
 
