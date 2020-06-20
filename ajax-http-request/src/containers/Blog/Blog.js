@@ -8,6 +8,7 @@ import asyncComponent from '../../hoc/asyncComponent';
 
 const AsyncNewPost = asyncComponent(() => {
     // dynamic import syntax
+    console.log(import('./NewPost/NewPost'));
     return import('./NewPost/NewPost');
 })
 
@@ -54,6 +55,7 @@ class Blog extends Component {
                     <Route path="/posts" component={Posts} />
                     <Route render={() => <h1>Page Not Found</h1>} />
                     {/* <Redirect from="/" to="/posts" /> */}
+                    {/* <Route path="/" component={Posts} /> */}
                 </Switch>
             </div>
         );
