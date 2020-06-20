@@ -24,16 +24,19 @@ class NewPost extends Component {
         axios.post('/posts', data)
             .then(response => {
                 console.log(response.data.id);
-                this.setState({ submitted: true });
+                this.props.history.push('/posts')
+                this.props.history.replace('/posts')
+                // this.setState({ submitted: true });
             });
     }
 
     render() {
         let redirect = null;
-        if (this.state.submitted) {
 
+        if (this.state.submitted) {
             redirect = <Redirect to="/posts" />;
         }
+
         return (
             <div className="NewPost">
                 {redirect}
