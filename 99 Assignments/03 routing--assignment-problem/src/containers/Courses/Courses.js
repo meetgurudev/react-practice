@@ -11,15 +11,15 @@ class Courses extends Component {
         ]
     }
 
-    render () {
+    render() {
         return (
             <div>
                 <h1>Amazing Udemy Courses</h1>
                 <section className="Courses">
                     {
-                        this.state.courses.map( course => {
+                        this.state.courses.map(course => {
                             return <article className="Course" key={course.id}>{course.title}</article>;
-                        } )
+                        })
                     }
                 </section>
             </div>
