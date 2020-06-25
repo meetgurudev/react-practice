@@ -21,5 +21,7 @@ npm start
  * getSnapShotBeforeUpdate()
  * componentDidUpdate()
  
-####
-Http-Ajax calls using Firebase
+#### Features
+Http-Ajax calls using Firebase.
+React Nagivation. 
+Forms and data.
