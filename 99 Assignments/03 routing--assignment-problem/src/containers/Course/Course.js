@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 
 class Course extends Component {
-    render () {
+
+    render() {
+
+        console.log(this.props);
         return (
             <div>
-                <h1>_COURSE_TITLE_</h1>
-                <p>You selected the Course with ID: _ID_</p>
+                <h1>{this.props.courseName}</h1>
+                <p>You selected the Course with ID: {this.props.courseId}</p>
             </div>
         );
     }

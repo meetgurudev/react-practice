@@ -45,6 +45,7 @@ class App extends Component {
 
           <Route path='/Users' component={Users} />
           <Route path='/Courses' component={Courses} />
+          <Route from='/All-Courses' to="/Courses" />
         </div>
       </BrowserRouter>
     );
