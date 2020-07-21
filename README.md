@@ -20,4 +20,8 @@ npm start
  * render()
  * getSnapShotBeforeUpdate()
  * componentDidUpdate()
-
+ 
+#### Features
+Http-Ajax calls using Firebase.
+React Nagivation. 
+Forms and data.
